@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-applogin-env
+  namespace: sirius
+data:
+  APP_NAME: "APPLOGIN"
+  LOG_LEVEL: "DEBUG"
+  BIND_PORT: "7058"
