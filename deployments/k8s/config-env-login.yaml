@@ -6,4 +6,4 @@ metadata:
 data:
   APP_NAME: "APPLOGIN"
   LOG_LEVEL: "DEBUG"
-  BIND_PORT: "7058"
+  BIND_PORT: "8080"

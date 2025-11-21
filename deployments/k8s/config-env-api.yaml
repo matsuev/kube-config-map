@@ -6,4 +6,4 @@ metadata:
 data:
   APP_NAME: "APPAPI"
   LOG_LEVEL: "NONE"
-  BIND_PORT: "7001"
+  BIND_PORT: "8080"

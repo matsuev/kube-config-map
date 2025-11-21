@@ -6,4 +6,4 @@ metadata:
 data:
   APP_NAME: "APPINFO"
   LOG_LEVEL: "INFO"
-  BIND_PORT: "7023"
+  BIND_PORT: "8080"
