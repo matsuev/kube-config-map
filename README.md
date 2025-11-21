@@ -9,7 +9,7 @@
    - ./bin/applogin
 
 Эти файлы нужно упаковать в Docker контейнеры:
-   - appini:latest
+   - appapi:latest
    - appinfo:latest
    - applogin:latest
 
@@ -29,6 +29,6 @@
 
 3. Deployment для запуска приложения с контейнерами:
    - nginx:latest
-   - appini:latest
+   - appapi:latest
    - appinfo:latest
    - applogin:latest
