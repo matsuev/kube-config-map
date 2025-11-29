@@ -1,0 +1,58 @@
+# Локальные файлы и зависимости
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+ehthumbs.db
+Icon?
+._*
+
+# Logs
+logs
+*.log
+
+# Build artifacts
+bin/
+build/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Docker
+*.tar
+*.tar.gz
+
+# Kubernetes
+*.kubeconfig
+kubeconfig
+
+# IDE / Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Go
+go.work
+go.work.sum
+
+# Python (на всякий случай)
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Minikube
+minikube.log
+
+# Остальное
+*.tmp
+temp/

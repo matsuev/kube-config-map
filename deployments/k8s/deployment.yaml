@@ -13,9 +13,9 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: goapp
-          image: kubeconfigmap:latest
-          imagePullPolicy: IfNotPresent
+        - name: applogin
+          image: applogin:latest
+          imagePullPolicy: Never
           resources:
             requests:
               memory: "32Mi"
@@ -25,11 +25,43 @@ spec:
               cpu: "500m"
           envFrom:
             - configMapRef:
-                name: my-app-env
+                name: my-applogin-env
+
+        - name: appapi
+          image: appapi:latest
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          envFrom:
+            - configMapRef:
+                name: my-appapi-env
+
+        - name: appinfo
+          image: appinfo:latest
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          envFrom:
+            - configMapRef:
+                name: my-appinfo-env
 
         - name: nginx
           image: nginx:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: http-port
+              protocol: TCP
           resources:
             requests:
               memory: "32Mi"
@@ -45,3 +77,7 @@ spec:
         - name: config-volume
           configMap:
             name: my-app-conf
+      volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf

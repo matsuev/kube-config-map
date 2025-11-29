@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-appinfo-env
+  namespace: sirius
+data:
+  APP_NAME: "appInfo"
+  LOG_LEVEL: "info"
+  BIND_PORT: "7023"
