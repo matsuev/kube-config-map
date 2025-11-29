@@ -1,14 +1,43 @@
+# deployments/k8s/config-conf.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-app-conf
   namespace: sirius
 data:
-  default.conf.template: |
-    server {
-      listen 80;
+  nginx.conf: |
+    events {
+        worker_connections 1024;
+    }
 
-      location /api {
-        proxy_pass http://localhost:8081; 
-      }
+    http {
+        server {
+            listen 80;
+
+            # Прокси для /api -> appapi:7001
+            location /api {
+                proxy_pass http://localhost:7001;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
+            # Прокси для /info -> appinfo:7023
+            location /info {
+                proxy_pass http://localhost:7023;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
+            # Прокси для /login -> applogin:7058
+            location /login {
+                proxy_pass http://localhost:7058;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+
+            # Если ничего не совпало — 404
+            location / {
+                return 404;
+            }
+        }
     }
